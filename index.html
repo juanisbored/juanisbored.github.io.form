@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="Validation.css">
+    <script src="Validation.js"></script>
+    <title>Document</title>
+</head>
+<body>
+  
+  <button class="icon" onclick="document.getElementById('Form').style.display='block'">
+    <img src="Images/LoginIcon .png" alt="Icon" style="height: 40px;">
+  </button>
+
+  <div id="Form" class="form">
+    <form class="form-content animate" action="/action_page.php" method="post">
+      <div class="close-button">
+        <span onclick="document.getElementById('Form').style.display='none'" class="close" title="Close Form">&times;</span>
+      </div>
+      
+      <div class="container" style="background-color:white">
+        <label for="email"><b>Email</b></label>
+        <input type="email" id="email" placeholder="Enter Email" name="email" required>
+  
+        <label for="psw"><b>Password</b></label>
+        <input type="password" id="psw"
+        pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{6,}" title="Must contain at least one number and one uppercase and lowercase letter, and at least 6 or more characters"  
+        placeholder="Enter Password" name="psw" required>
+          
+        <button id="submit" type="submit" class="login">Login</button>
+      </div>
+  
+      <button type="button" onclick="document.getElementById('Form').style.display='none'" class="cancelbtn">Cancel</button>
+        <span class="psw">Forgot <a href="#">password?</a></span>
+      </div>
+
+    </form>
+  </div>
+</body>
+
+<script>
+  var form = document.getElementById('Form');
+/*Click anywhere outside and Form will Close*/
+  window.onclick = function(event) {
+    if (event.target == form) {
+      form.style.display = "none";
+    }
+  }
+
+  function email(email)
+  {
+    var letters = /^[A-Za-z0-9.]+@[A-Za-z]{3}$/;
+    if(email.value.legth==0)
+    {
+      alert('Please enter your email');
+      email.focus();
+      return false;
+    }
+    else if(email.value.match(letters))
+    {
+      return true;
+    }
+    else
+    {
+      alert('Email must contain @');
+      email.focus();
+      return false;
+    }
+  }
+
+</script>
+
+</html>
